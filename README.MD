@@ -1,87 +1,51 @@
-# SOFTS: Efficient Multivariate Time Series Forecasting with Series-Core Fusion
+# **Hyperparameter Optimization for SOFTS architectures**
 
-The code repository for [SOFTS: Efficient Multivariate Time Series Forecasting with Series-Core Fusion](https://arxiv.org/pdf/2404.14197.pdf) in PyTorch. A scalable pure MLP model that achieves state-of-the-art performance on multivariate time series forecasting benchmarks.
+This repository is a fork of the official implementation of the Deep Neural Network [SOFTS: Efficient Multivariate Time Series Forecasting with Series-Core Fusion](https://arxiv.org/pdf/2404.14197.pdf) in PyTorch, a scalable pure MLP model that achieves state-of-the-art performance on multivariate time series forecasting benchmarks. Source code is modified in order to improve efficiency and compatiblity with 
+the hyperparameter tunning utilities. Furthermore, several scripts are developed that implement the Hyperparameter Optimization process with raytune and smac libraries.
 
-### Main Structure
+## Requirements
 
-![structure](imgs/structure.png)
+* Linux system (tested on Ubuntu 22.04+)
+* NVIDIA-compatible GPU (tested with RTX 3090)
 
-#### Star Aggregate-Redistribute Module (STAR)
+## Reproduciblity
 
-![STAR](imgs/STAR.png)
+To replicate the results obtained from the ETTh2 dataset, please follow these steps:
 
-#### Performance Comparison
+### Install conda environments
 
-![performance](imgs/performance.png)
+```{bash}
+conda create -f conda_config_files/environment-raytune.yml
+conda create -f conda_config_files/environment-smac.yml
+```
 
-#### Efficiency Comparison
+### Download datasets
 
-![efficiency](imgs/efficiency.png)
+```{bash}
+conda activate py3.11-timemixer-raytune
+python3 download_data.py
+conda deactivate
+```
+### Run main script
 
-## Prerequisites
+```{bash}
+. runexpSOFTS-ETTh2.sh
+```
 
-scikit-learn==1.2.2
+#### Baseline Results (seed=2021)
+![baeline](tfm_imgs/baseline.png)
 
-numpy==1.22.4
+#### Evolution of HPO algorithms (seed=123)
+![evolution](tfm_imgs/time_vs_cost/summary.png)
 
-pandas==1.2.4
+#### Performance comparison (seed=123)
+![comparison_96](tfm_imgs/comparison_h96.png)
+![comparison_192](tfm_imgs/comparison_h192.png)
+![comparison_336](tfm_imgs/comparison_h336.png)
+![comparison_720](tfm_imgs/comparison_h720.png)
 
-torch==1.10.0+cu111
 
-## Datasets
-
-You can directly download the datasets used in the paper from [Google Drive](https://drive.google.com/drive/folders/1QPM7MMKlzVffdzbGGkzARDuIqiYRed_f?usp=drive_link) or [NJU Box](https://box.nju.edu.cn/d/abc2bbd7cff6461eb4da/). 
-
-Once downloaded, place the datasets under folder `dataset/`, like `dataset/ETT-small`, `dataset/traffic`, etc.
-
-## Run on your own dataset
-
-### Choice 1: Use scripts to run
-If you wish to utilize your own datasets, please follow these steps:
-
-1. **Dataset Format**: Make sure your datasets follow the format of the provided datasets. Typically, the first column should contain dates, and the remaining columns should represent variables to predict. This consistency will help seamlessly integrate your datasets into the existing infrastructure.
-
-2. **Dataset Class Creation**: Create a dataset class within `data_provider/data_loader.py`. Refer to the structure of the `Dataset_Custom` class for guidance. This class should handle the loading and preprocessing of your dataset.
-
-3. **Update Data Dictionary**: Update the `data_dict` in `data_provider/data_factory.py` to include your dataset. 
-
-4. **Usage in Scripts**: Utilize your dataset within the scripts by specifying the appropriate parameters. 
-   - The `--data` parameter should match the dataset key within the `data_dict`.
-   - The `--root_path` parameter should point to the folder containing your dataset.
-   - The `--data_path` parameter should specify the file name of your dataset.
-
-Refer to the examples in `scripts/long_term_forecast` for guidance on how to integrate your custom dataset into the existing scripts.
-
-### Choice 2: Use the provided API
-We have provided a custom exp class in `exp/exp_custom.py` and a guidance Jupyter notebook `run_on_your_own_dataset.ipynb` to help you run the model on your own dataset.
-
-## Scripts
-
-To reproduce the main results in Table 2, run the script files under folder `scripts/long_term_forecast`.
-
-For example, to reproduce the results of SOFTS on ETTm1 dataset, run the following command:
-
-```sh scripts/long_term_forecast/ETT_script/SOFTS_ETTm1.sh```
-
-## Acknowledgement
-
-We appreciate the following github repos a lot for their valuable code base or datasets:
-
-https://github.com/zhouhaoyi/Informer2020
-
-https://github.com/thuml/Autoformer
-
-https://github.com/zhouhaoyi/ETDataset
-
-https://github.com/laiguokun/multivariate-time-series-data
-
-https://github.com/thuml/Time-Series-Library
-
-https://github.com/thuml/iTransformer
-
-## Reference
-
-If you find our work useful in your research, please use the following citation:
+## References
 
 ```
 @article{han2024softs,
