@@ -7,6 +7,7 @@ the hyperparameter tunning utilities. Furthermore, several scripts are developed
 
 * Linux system (tested on Ubuntu 22.04+)
 * NVIDIA-compatible GPU (tested with RTX 3090)
+* miniconda3/anaconda3 installed as virtual environment manager
 
 ## Reproduciblity
 
@@ -31,6 +32,8 @@ conda deactivate
 ```{bash}
 . runexpSOFTS-ETTh2.sh
 ```
+
+Takes approximately 2 GPU days on a NVIDIA RTX 3090 GPU
 
 #### Baseline Results (seed=2021)
 ![baeline](tfm_imgs/baseline.png)
