@@ -1,0 +1,228 @@
+Args in experiment:
+Namespace(model='SOFTS', seed=2021, data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='1h', seq_len=96, label_len=48, pred_len=96, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, train_epochs=20, batch_size=32, patience=3, delta=0.0, learning_rate=0.0003, des='test', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_dir='./checkpoints/baseline/SOFTS/ETTh2_96_96', save_last=False, break_at=0)
+Use GPU: cuda:0
+train 8449
+val 2785
+test 2785
+	iters: 100, epoch: 1 | loss: 0.3667152
+	speed: 0.0096s/iter; left time: 49.9567s
+	iters: 200, epoch: 1 | loss: 0.6825901
+	speed: 0.0033s/iter; left time: 16.9388s
+Epoch: 1 cost time: 1.2202889919281006
+Epoch: 1, Steps: 265 | Train Loss: 0.5246526 Vali Loss: 0.2177063
+Updating learning rate to 0.00029815325108927063
+Validation loss decreased (inf --> 0.2177).  Saving model state dict ...
+	iters: 100, epoch: 2 | loss: 0.3694743
+	speed: 0.0080s/iter; left time: 39.6681s
+	iters: 200, epoch: 2 | loss: 0.4236522
+	speed: 0.0034s/iter; left time: 16.3392s
+Epoch: 2 cost time: 0.9365198612213135
+Epoch: 2, Steps: 265 | Train Loss: 0.3965632 Vali Loss: 0.2135497
+Updating learning rate to 0.00029265847744427303
+Validation loss decreased (0.2177 --> 0.2135).  Saving model state dict ...
+	iters: 100, epoch: 3 | loss: 0.2627294
+	speed: 0.0078s/iter; left time: 36.5531s
+	iters: 200, epoch: 3 | loss: 0.8814768
+	speed: 0.0033s/iter; left time: 15.0174s
+Epoch: 3 cost time: 0.9272387027740479
+Epoch: 3, Steps: 265 | Train Loss: 0.5721031 Vali Loss: 0.2236033
+Updating learning rate to 0.00028365097862825513
+EarlyStopping counter: 1 out of 3
+	iters: 100, epoch: 4 | loss: 0.2756529
+	speed: 0.0078s/iter; left time: 34.2141s
+	iters: 200, epoch: 4 | loss: 0.3326845
+	speed: 0.0032s/iter; left time: 13.6947s
+Epoch: 4 cost time: 0.9091699123382568
+Epoch: 4, Steps: 265 | Train Loss: 0.3041687 Vali Loss: 0.2218471
+Updating learning rate to 0.0002713525491562421
+EarlyStopping counter: 2 out of 3
+	iters: 100, epoch: 5 | loss: 0.3567657
+	speed: 0.0078s/iter; left time: 32.4113s
+	iters: 200, epoch: 5 | loss: 0.3348074
+	speed: 0.0033s/iter; left time: 13.1405s
+Epoch: 5 cost time: 0.907724142074585
+Epoch: 5, Steps: 265 | Train Loss: 0.3457865 Vali Loss: 0.2285337
+Updating learning rate to 0.00025606601717798207
+EarlyStopping counter: 3 out of 3
+Early stopping
+#####   loading best weights   #####
+Process: python3 (PID: 55558) is using 354 MiB of GPU memory.
+Epoch: 5 | Elapsed Time: 18.226977825164795 s | VRAM usage: 0.345703125 Gb | Train MSE: 0.3912 Train MAE: 0.3548 Vali MSE: 0.2135 Vali MAE: 0.3179 Test MSE: 0.2943 Test MAE: 0.3442
+
+
+
+Args in experiment:
+Namespace(model='SOFTS', seed=2021, data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='1h', seq_len=96, label_len=48, pred_len=192, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, train_epochs=20, batch_size=32, patience=3, delta=0.0, learning_rate=0.0003, des='test', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_dir='./checkpoints/baseline/SOFTS/ETTh2_96_192', save_last=False, break_at=0)
+Use GPU: cuda:0
+train 8353
+val 2689
+test 2689
+	iters: 100, epoch: 1 | loss: 0.6045358
+	speed: 0.0095s/iter; left time: 48.9368s
+	iters: 200, epoch: 1 | loss: 0.6678050
+	speed: 0.0034s/iter; left time: 17.2264s
+Epoch: 1 cost time: 1.2068259716033936
+Epoch: 1, Steps: 262 | Train Loss: 0.6361704 Vali Loss: 0.2859304
+Updating learning rate to 0.00029815325108927063
+Validation loss decreased (inf --> 0.2859).  Saving model state dict ...
+	iters: 100, epoch: 2 | loss: 0.3501042
+	speed: 0.0079s/iter; left time: 38.3449s
+	iters: 200, epoch: 2 | loss: 0.3736480
+	speed: 0.0031s/iter; left time: 14.5780s
+Epoch: 2 cost time: 0.8535218238830566
+Epoch: 2, Steps: 262 | Train Loss: 0.3618761 Vali Loss: 0.2800929
+Updating learning rate to 0.00029265847744427303
+Validation loss decreased (0.2859 --> 0.2801).  Saving model state dict ...
+	iters: 100, epoch: 3 | loss: 0.7420240
+	speed: 0.0077s/iter; left time: 35.3217s
+	iters: 200, epoch: 3 | loss: 0.3921106
+	speed: 0.0032s/iter; left time: 14.3021s
+Epoch: 3 cost time: 0.9017667770385742
+Epoch: 3, Steps: 262 | Train Loss: 0.5670673 Vali Loss: 0.2865328
+Updating learning rate to 0.00028365097862825513
+EarlyStopping counter: 1 out of 3
+	iters: 100, epoch: 4 | loss: 0.5953773
+	speed: 0.0078s/iter; left time: 33.7958s
+	iters: 200, epoch: 4 | loss: 0.8417904
+	speed: 0.0032s/iter; left time: 13.6233s
+Epoch: 4 cost time: 0.9073319435119629
+Epoch: 4, Steps: 262 | Train Loss: 0.7185839 Vali Loss: 0.2898495
+Updating learning rate to 0.0002713525491562421
+EarlyStopping counter: 2 out of 3
+	iters: 100, epoch: 5 | loss: 0.2957480
+	speed: 0.0078s/iter; left time: 31.9723s
+	iters: 200, epoch: 5 | loss: 0.5428463
+	speed: 0.0032s/iter; left time: 12.6823s
+Epoch: 5 cost time: 0.8851566314697266
+Epoch: 5, Steps: 262 | Train Loss: 0.4192971 Vali Loss: 0.2881517
+Updating learning rate to 0.00025606601717798207
+EarlyStopping counter: 3 out of 3
+Early stopping
+#####   loading best weights   #####
+Process: python3 (PID: 56092) is using 356 MiB of GPU memory.
+Epoch: 5 | Elapsed Time: 17.87874698638916 s | VRAM usage: 0.34765625 Gb | Train MSE: 0.5106 Train MAE: 0.4079 Vali MSE: 0.2801 Vali MAE: 0.3597 Test MSE: 0.3708 Test MAE: 0.3945
+
+
+
+Args in experiment:
+Namespace(model='SOFTS', seed=2021, data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='1h', seq_len=96, label_len=48, pred_len=336, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, train_epochs=20, batch_size=32, patience=3, delta=0.0, learning_rate=0.0003, des='test', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_dir='./checkpoints/baseline/SOFTS/ETTh2_96_336', save_last=False, break_at=0)
+Use GPU: cuda:0
+train 8209
+val 2545
+test 2545
+	iters: 100, epoch: 1 | loss: 0.4363515
+	speed: 0.0094s/iter; left time: 47.3191s
+	iters: 200, epoch: 1 | loss: 0.8335178
+	speed: 0.0033s/iter; left time: 16.4511s
+Epoch: 1 cost time: 1.1801021099090576
+Epoch: 1, Steps: 257 | Train Loss: 0.6349347 Vali Loss: 0.3684455
+Updating learning rate to 0.00029815325108927063
+Validation loss decreased (inf --> 0.3684).  Saving model state dict ...
+	iters: 100, epoch: 2 | loss: 0.6849549
+	speed: 0.0078s/iter; left time: 37.3554s
+	iters: 200, epoch: 2 | loss: 0.4672641
+	speed: 0.0033s/iter; left time: 15.6249s
+Epoch: 2 cost time: 0.8971600532531738
+Epoch: 2, Steps: 257 | Train Loss: 0.5761095 Vali Loss: 0.3680925
+Updating learning rate to 0.00029265847744427303
+Validation loss decreased (0.3684 --> 0.3681).  Saving model state dict ...
+	iters: 100, epoch: 3 | loss: 0.4541549
+	speed: 0.0077s/iter; left time: 34.6685s
+	iters: 200, epoch: 3 | loss: 0.4683935
+	speed: 0.0032s/iter; left time: 14.1733s
+Epoch: 3 cost time: 0.9062817096710205
+Epoch: 3, Steps: 257 | Train Loss: 0.4612742 Vali Loss: 0.3647212
+Updating learning rate to 0.00028365097862825513
+Validation loss decreased (0.3681 --> 0.3647).  Saving model state dict ...
+	iters: 100, epoch: 4 | loss: 0.3803116
+	speed: 0.0081s/iter; left time: 34.4988s
+	iters: 200, epoch: 4 | loss: 0.4790474
+	speed: 0.0037s/iter; left time: 15.2975s
+Epoch: 4 cost time: 0.987518310546875
+Epoch: 4, Steps: 257 | Train Loss: 0.4296795 Vali Loss: 0.3811211
+Updating learning rate to 0.0002713525491562421
+EarlyStopping counter: 1 out of 3
+	iters: 100, epoch: 5 | loss: 0.5960617
+	speed: 0.0083s/iter; left time: 33.4458s
+	iters: 200, epoch: 5 | loss: 0.4882784
+	speed: 0.0035s/iter; left time: 13.8057s
+Epoch: 5 cost time: 0.9778363704681396
+Epoch: 5, Steps: 257 | Train Loss: 0.5421701 Vali Loss: 0.3539470
+Updating learning rate to 0.00025606601717798207
+Validation loss decreased (0.3647 --> 0.3539).  Saving model state dict ...
+	iters: 100, epoch: 6 | loss: 0.6009469
+	speed: 0.0078s/iter; left time: 29.3561s
+	iters: 200, epoch: 6 | loss: 0.2726520
+	speed: 0.0031s/iter; left time: 11.2043s
+Epoch: 6 cost time: 0.8430709838867188
+Epoch: 6, Steps: 257 | Train Loss: 0.4367995 Vali Loss: 0.3713719
+Updating learning rate to 0.00023816778784387094
+EarlyStopping counter: 1 out of 3
+	iters: 100, epoch: 7 | loss: 0.4870767
+	speed: 0.0078s/iter; left time: 27.2312s
+	iters: 200, epoch: 7 | loss: 0.8099769
+	speed: 0.0034s/iter; left time: 11.7219s
+Epoch: 7 cost time: 0.9644167423248291
+Epoch: 7, Steps: 257 | Train Loss: 0.6485268 Vali Loss: 0.3737259
+Updating learning rate to 0.00021809857496093199
+EarlyStopping counter: 2 out of 3
+	iters: 100, epoch: 8 | loss: 0.3286598
+	speed: 0.0078s/iter; left time: 25.2600s
+	iters: 200, epoch: 8 | loss: 0.4726951
+	speed: 0.0032s/iter; left time: 9.9582s
+Epoch: 8 cost time: 0.8660361766815186
+Epoch: 8, Steps: 257 | Train Loss: 0.4006775 Vali Loss: 0.3670885
+Updating learning rate to 0.0001963525491562421
+EarlyStopping counter: 3 out of 3
+Early stopping
+#####   loading best weights   #####
+Process: python3 (PID: 56685) is using 356 MiB of GPU memory.
+Epoch: 8 | Elapsed Time: 42.60597538948059 s | VRAM usage: 0.34765625 Gb | Train MSE: 0.5482 Train MAE: 0.4329 Vali MSE: 0.3539 Vali MAE: 0.4047 Test MSE: 0.4319 Test MAE: 0.4342
+
+
+
+Args in experiment:
+Namespace(model='SOFTS', seed=2021, data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='1h', seq_len=96, label_len=48, pred_len=720, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, train_epochs=20, batch_size=32, patience=3, delta=0.0, learning_rate=0.0003, des='test', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_dir='./checkpoints/baseline/SOFTS/ETTh2_96_720', save_last=False, break_at=0)
+Use GPU: cuda:0
+train 7825
+val 2161
+test 2161
+	iters: 100, epoch: 1 | loss: 1.0191166
+	speed: 0.0099s/iter; left time: 47.7505s
+	iters: 200, epoch: 1 | loss: 0.7014239
+	speed: 0.0037s/iter; left time: 17.3091s
+Epoch: 1 cost time: 1.2388584613800049
+Epoch: 1, Steps: 245 | Train Loss: 0.8602703 Vali Loss: 0.6035758
+Updating learning rate to 0.00029815325108927063
+Validation loss decreased (inf --> 0.6036).  Saving model state dict ...
+	iters: 100, epoch: 2 | loss: 1.0367497
+	speed: 0.0079s/iter; left time: 36.1976s
+	iters: 200, epoch: 2 | loss: 0.6401722
+	speed: 0.0037s/iter; left time: 16.3014s
+Epoch: 2 cost time: 0.9626154899597168
+Epoch: 2, Steps: 245 | Train Loss: 0.8384610 Vali Loss: 0.6126353
+Updating learning rate to 0.00029265847744427303
+EarlyStopping counter: 1 out of 3
+	iters: 100, epoch: 3 | loss: 0.5254322
+	speed: 0.0076s/iter; left time: 32.7342s
+	iters: 200, epoch: 3 | loss: 1.0080953
+	speed: 0.0034s/iter; left time: 14.4376s
+Epoch: 3 cost time: 0.8893899917602539
+Epoch: 3, Steps: 245 | Train Loss: 0.7667637 Vali Loss: 0.6199614
+Updating learning rate to 0.00028365097862825513
+EarlyStopping counter: 2 out of 3
+	iters: 100, epoch: 4 | loss: 0.6276016
+	speed: 0.0079s/iter; left time: 32.2085s
+	iters: 200, epoch: 4 | loss: 0.9610701
+	speed: 0.0037s/iter; left time: 14.7254s
+Epoch: 4 cost time: 0.9824285507202148
+Epoch: 4, Steps: 245 | Train Loss: 0.7943358 Vali Loss: 0.6337012
+Updating learning rate to 0.0002713525491562421
+EarlyStopping counter: 3 out of 3
+Early stopping
+#####   loading best weights   #####
+Process: python3 (PID: 57386) is using 362 MiB of GPU memory.
+Epoch: 4 | Elapsed Time: 12.604782819747925 s | VRAM usage: 0.353515625 Gb | Train MSE: 0.8404 Train MAE: 0.5507 Vali MSE: 0.6036 Vali MAE: 0.5354 Test MSE: 0.4266 Test MAE: 0.4448
+
+
+

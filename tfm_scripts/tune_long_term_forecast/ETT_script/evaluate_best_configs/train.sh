@@ -1,0 +1,746 @@
+
+# Train and evaluate the best configuration found by each algorithm with the same initial seed
+
+# ETTh2_96_96
+
+# random_search
+
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-26 17:31:25. Total running time: 2hr 23min 10s
+# Logical resource usage: 1.0/32 CPUs, 0.25/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: 4031f_00698 with best_valid_loss=0.21214394874375855 and 
+# params={
+    # 'batch_size': 128, 
+    # 'learning_rate': 0.00033342263698205347, 
+    # 'd_model': 512, 
+    # 'd_core': 128, 
+    # 'e_layers': 1, 
+    # 'dropout': 0.0017672547781797897, 
+    # 'lradj': 'type1', 
+    # 'd_ff': 1536
+    # }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/random_search/ETTh2_96_96 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 96 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 128 \
+    --e_layers 1 \
+    --d_ff 1536 \
+    --dropout 0.0017672547781797897 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 128 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.00033342263698205347 \
+    --loss MSE \
+    --lradj type1 \
+    --seed 123;
+
+# hyperopt_tpe
+
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-27 06:07:13. Total running time: 1hr 48min 54s
+# Logical resource usage: 1.0/32 CPUs, 0.25/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: fff71062 with best_valid_loss=0.21130691505634164 and 
+# params={
+#     'alpha_d_ff': 4, 
+#     'batch_size': 64, 
+#     'd_core': 256, 
+#     'd_model': 512, 
+#     'dropout': 0.005952521774024309, 
+#     'e_layers': 1, 
+#     'learning_rate': 8.256811140326408e-05, 
+#     'lradj': 'cosine'
+# }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/hyperopt_tpe/ETTh2_96_96 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 96 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 256 \
+    --e_layers 1 \
+    --d_ff 2048 \
+    --dropout 0.005952521774024309 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 64 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 8.256811140326408e-05 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# bohb
+
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-29 13:05:28. Total running time: 2hr 1min 16s
+# Logical resource usage: 1.0/32 CPUs, 0.25/2 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: f7d9c58c with best_valid_loss=0.2116515468384676 and 
+# params={
+#     'batch_size': 128, 
+#     'd_core': 128, 
+#     'd_model': 512, 
+#     'dropout': 0.0020976290498600173, 
+#     'e_layers': 4, 
+#     'learning_rate': 9.920311671502047e-05, 
+#     'lradj': 'type1', 
+#     'd_ff': 1536
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/bohb/ETTh2_96_96 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 96 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 128 \
+    --e_layers 4 \
+    --d_ff 1536 \
+    --dropout 0.0020976290498600173 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 128 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 9.920311671502047e-05 \
+    --loss MSE \
+    --lradj type1 \
+    --seed 123;
+
+
+# smac
+
+# Configuration(values={
+#   'alpha_d_ff': 2,
+#   'batch_size': 64,
+#   'd_core': 128,
+#   'd_model': 512,
+#   'dropout': 0.0010042267728,
+#   'e_layers': 1,
+#   'learning_rate': 0.0001918999088,
+#   'lradj': 'cosine',
+# })
+# Incumbent cost: 0.2115776482454536
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/smac/ETTh2_96_96 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 96 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 128 \
+    --e_layers 1 \
+    --d_ff 1024 \
+    --dropout 0.0010042267728 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 64 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.0001918999088 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# ETTh2_96_192
+
+# random_search
+
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-26 21:34:56. Total running time: 2hr 21min 40s
+# Logical resource usage: 1.0/32 CPUs, 0.25/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: 7b118_01145 with best_valid_loss=0.2636570058189479 and 
+# params={
+#     'batch_size': 128, 
+#     'learning_rate': 0.0003438339131829745, 
+#     'd_model': 512, 
+#     'd_core': 32, 
+#     'e_layers': 2,
+#     'dropout': 0.006296540494111678, 
+#     'lradj': 'cosine', 
+#     'd_ff': 1536
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/random_search/ETTh2_96_192 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 192 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 2 \
+    --d_ff 1536 \
+    --dropout 0.0017672547781797897 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 128 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.0003438339131829745 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# hyperopt_tpe
+
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-27 08:32:03. Total running time: 2hr 24min 44s
+# Logical resource usage: 1.0/32 CPUs, 0.25/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: 11d8609c with best_valid_loss=0.2675670376161786 and 
+# params={
+#     'alpha_d_ff': 3, 
+#     'batch_size': 32,
+#     'd_core': 32, 
+#     'd_model': 512, 
+#     'dropout': 0.0014983845712933787, 
+#     'e_layers': 2, 
+#     'learning_rate': 9.778148250609108e-05, 
+#     'lradj': 'cosine'
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/hyperopt_tpe/ETTh2_96_192 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 192 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 2 \
+    --d_ff 1536 \
+    --dropout 0.0014983845712933787 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 32 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 9.778148250609108e-05 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# bohb
+
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-28 03:43:28. Total running time: 2hr 16min 21s
+# Logical resource usage: 0/32 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: 54d7c963 with best_valid_loss=0.26986561666837455 and 
+# params={
+#     'batch_size': 64, 
+#     'd_core': 32, 
+#     'd_model': 256, 
+#     'dropout': 0.00965681500229392, 
+#     'e_layers': 3, 
+#     'learning_rate': 0.0006610560591675113, 
+#     'lradj': 'type1', 
+#     'd_ff': 256
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/bohb/ETTh2_96_192 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 192 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 256 \
+    --d_core 32 \
+    --e_layers 3 \
+    --d_ff 256 \
+    --dropout 0.00965681500229392 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 64 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.0006610560591675113 \
+    --loss MSE \
+    --lradj type1 \
+    --seed 123;
+
+# smac
+
+# Configuration(values={
+#   'alpha_d_ff': 4,
+#   'batch_size': 64,
+#   'd_core': 32,
+#   'd_model': 512,
+#   'dropout': 0.0010270126829,
+#   'e_layers': 2,
+#   'learning_rate': 0.0002345345781,
+#   'lradj': 'type1',
+# })
+# Incumbent cost: 0.26787560238364727
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/smac/ETTh2_96_192 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 192 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 2 \
+    --d_ff 2048 \
+    --dropout 0.0010270126829 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 64 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.0002345345781 \
+    --loss MSE \
+    --lradj type1 \
+    --seed 123;
+
+# ETTh2_96_336
+
+# random_search
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-26 23:56:00. Total running time: 2hr 20min 58s
+# Logical resource usage: 1.0/32 CPUs, 0.25/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: 49450_01267 with best_valid_loss=0.3391042042926159 and 
+# params={
+#     'batch_size': 16, 
+#     'learning_rate': 0.00046273462922083247, 
+#     'd_model': 256, 
+#     'd_core': 256, 
+#     'e_layers': 2, 
+#     'dropout': 0.0020975557131911607, 
+#     'lradj': 'type1', 
+#     'd_ff': 768
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/random_search/ETTh2_96_336 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 336 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 256 \
+    --d_core 256 \
+    --e_layers 2 \
+    --d_ff 768 \
+    --dropout 0.0020975557131911607 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 16 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.00046273462922083247 \
+    --loss MSE \
+    --lradj type1 \
+    --seed 123;
+
+# hyperopt_tpe
+# Trial status: 1386 TERMINATED
+# Current time: 2024-08-27 20:25:45. Total running time: 4hr 0min 0s
+# Logical resource usage: 4.0/32 CPUs, 1.0/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: e4433f94 with best_valid_loss=0.33277763513837205 and 
+# params={
+#     'alpha_d_ff': 3, 
+#     'batch_size': 8, 
+#     'd_core': 128, 
+#     'd_model': 512, 
+#     'dropout': 0.0012764168364263933, 
+#     'e_layers': 4,
+#     'learning_rate': 0.00010063506298169274, 
+#     'lradj': 'cosine'
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/hyperopt_tpe/ETTh2_96_336 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 336 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 128 \
+    --e_layers 4 \
+    --d_ff 1536 \
+    --dropout 0.0012764168364263933 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 8 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.00010063506298169274 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# bohb
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-28 05:58:07. Total running time: 2hr 14min 33s
+# Logical resource usage: 0/32 CPUs, 0/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: f5feec93 with best_valid_loss=0.34064966805557373 and 
+# params={
+#     'batch_size': 64, 
+#     'd_core': 512, 
+#     'd_model': 512, 
+#     'dropout': 0.00284165186327066, 
+#     'e_layers': 3, 
+#     'learning_rate': 0.00041051918660304744, 
+#     'lradj': 'cosine', 
+#     'd_ff': 1536
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/bohb/ETTh2_96_336 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 336 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 512 \
+    --e_layers 3 \
+    --d_ff 1536 \
+    --dropout 0.00284165186327066 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 64 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.00041051918660304744 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# smac
+# Configuration(values={
+#   'alpha_d_ff': 2,
+#   'batch_size': 128,
+#   'd_core': 32,
+#   'd_model': 512,
+#   'dropout': 0.002214173781,
+#   'e_layers': 4,
+#   'learning_rate': 0.0007070252081,
+#   'lradj': 'type1',
+# })
+# Incumbent cost: 0.3340936536990355
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/smac/ETTh2_96_336 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 336 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 4 \
+    --d_ff 1024 \
+    --dropout 0.002214173781 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 128 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.0007070252081 \
+    --loss MSE \
+    --lradj type1 \
+    --seed 123;
+
+# ETTh2_96_720
+
+# random_search
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-27 03:16:46. Total running time: 3hr 20min 39s
+# Logical resource usage: 1.0/32 CPUs, 0.5/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: fe38e_00853 with best_valid_loss=0.5258231757968072 and 
+# params={
+#     'batch_size': 32, 
+#     'learning_rate': 0.00010464440654266554, 
+#     'd_model': 512, 
+#     'd_core': 32, 
+#     'e_layers': 4, 
+#     'dropout': 0.010067721446332728, 
+#     'lradj': 'cosine', 
+#     'd_ff': 512
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/random_search/ETTh2_96_720 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 720 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 4 \
+    --d_ff 1024 \
+    --dropout 0.010067721446332728 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 32 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.00010464440654266554 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# hyperopt_tpe
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-28 01:26:51. Total running time: 58min 45s
+# Logical resource usage: 1.0/32 CPUs, 0.25/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: 1344f6aa with best_valid_loss=0.5175606801464623 and 
+# params={
+#     'alpha_d_ff': 1, 
+#     'batch_size': 128, 
+#     'd_core': 32, 
+#     'd_model': 512, 
+#     'dropout': 0.006587017820030318, 
+#     'e_layers': 2, 
+#     'learning_rate': 0.0004634420126237182, 
+#     'lradj': 'cosine'
+#     }
+
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/hyperopt_tpe/ETTh2_96_720 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 720 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 2 \
+    --d_ff 512 \
+    --dropout 0.006587017820030318 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 128 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.0004634420126237182 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+# bohb
+# Trial status: 1500 TERMINATED
+# Current time: 2024-08-28 08:12:05. Total running time: 2hr 13min 52s
+# Logical resource usage: 1.0/32 CPUs, 0.25/1 GPUs (0.0/1.0 accelerator_type:G)
+# Current best trial: f7127759 with best_valid_loss=0.5285375164317511 and 
+# params={
+#     'batch_size': 64, 
+#     'd_core': 32, 
+#     'd_model': 512, 
+#     'dropout': 0.001259110023348236, 
+#     'e_layers': 3, 
+#     'learning_rate': 0.0002954316154256074, 
+#     'lradj': 'cosine', 
+#     'd_ff': 1536
+#     }
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/bohb/ETTh2_96_720 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 720 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 3 \
+    --d_ff 1536 \
+    --dropout 0.001259110023348236 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 64 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.0002954316154256074 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;
+
+
+# smac
+
+# Configuration(values={
+#   'alpha_d_ff': 4,
+#   'batch_size': 64,
+#   'd_core': 32,
+#   'd_model': 512,
+#   'dropout': 0.0010494665051,
+#   'e_layers': 2,
+#   'learning_rate': 0.000297833515,
+#   'lradj': 'cosine',
+# })
+# Incumbent cost: 0.5203712052186845
+
+python3 train_softs.py \
+    --model SOFTS \
+    --data ETTh2 \
+    --root_path ./dataset/ETT-small/ \
+    --data_path ETTh2.csv \
+    --features M \
+    --save_dir ./checkpoints/hptunning/best_configs/smac/ETTh2_96_720 \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 720 \
+    --enc_in 7 \
+    --dec_in 7 \
+    --c_out 7 \
+    --d_model 512 \
+    --d_core 32 \
+    --e_layers 2 \
+    --d_ff 2048 \
+    --dropout 0.0010494665051 \
+    --embed timeF \
+    --activation gelu \
+    --num_workers 1 \
+    --train_epochs 20 \
+    --batch_size 64 \
+    --patience 3 \
+    --delta 0.0 \
+    --learning_rate 0.000297833515 \
+    --loss MSE \
+    --lradj cosine \
+    --seed 123;

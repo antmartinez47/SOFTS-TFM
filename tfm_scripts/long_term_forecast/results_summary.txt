@@ -1,0 +1,369 @@
+Loss (MSE) and metrics (MAE) values for the weights corresponding to the best-performing epoch
+Performance is measured by loss over validation set.
+
+Results from three similar implementations are compared:
+
+The main reason of this experiment is to check if the changes alter the inner workings of the official source code.
+
+This changes are added in order to improve the compatiblity of the training scripts with 
+the package (ray-tune) utilized to run the hyperparameter optimization process.
+
+1. Original implementation. Scripts located at scripts/long_term_forecast
+2. Original implementation with modifications for the tunning process (the call to the validation function over the test at the end of each epoch is removed and other modifications are applied in order to increase efficiency). Results located at: 'checkpoints/baseline'. Scripts located at: 'tfm_scripts/long_term_forecast'
+
+ETTh1_96_96
+
+1:
+Epoch: 4, Steps: 265 
+Train Loss: 0.3428185 
+Vali Loss: 0.6827022 
+Test Loss: 0.3817697
+    Test MSE: 0.3818 Test MAE: 0.4008
+
+2:
+Epoch: 5 | Elapsed Time: 33.51252031326294 s
+Train MSE: 0.3210 Train MAE: 0.3915 
+Vali MSE: 0.6833 Vali MAE: 0.5470 
+    Test MSE: 0.3874 Test MAE: 0.4043
+
+ETTh1_96_192
+
+1: 
+Epoch: 3, Steps: 262 | 
+Train Loss: 0.4581329 
+Vali Loss: 0.9909888 
+Test Loss: 0.4365895
+    Test MSE: 0.4366 Test MAE: 0.4327
+
+2:
+Epoch: 3 | Elapsed Time: 20.0544912815094 s 
+Train MSE: 0.3988 Train MAE: 0.4372 
+Vali MSE: 0.9892 Vali MAE: 0.6550 
+    Test MSE: 0.4411 Test MAE: 0.4356
+
+ETTh1_96_336
+
+1:
+Epoch: 1, Steps: 257 | 
+Train Loss: 0.4622256 
+Vali Loss: 1.2899505 
+Test Loss: 0.4791289
+    Test MSE: 0.4791 Test MAE: 0.4519
+
+3:
+Epoch: 1 | Elapsed Time: 9.838968276977539 s 
+Train MSE: 0.4810 Train MAE: 0.4813 
+Vali MSE: 1.2900 Vali MAE: 0.7599 
+    Test MSE: 0.4791 Test MAE: 0.4519
+
+ETTh1_96_720
+
+1:
+Epoch: 1, Steps: 245 | 
+Train Loss: 0.6428698 
+Vali Loss: 1.5647272 
+Test Loss: 0.4986124
+    Test MSE: 0.4986 Test MAE: 0.4880
+2: 
+Epoch: 1 | Elapsed Time: 10.825844764709473 s | 
+Train MSE: 0.6024 Train MAE: 0.5472 
+Vali MSE: 1.5647 Vali MAE: 0.8522 
+    Test MSE: 0.4986 Test MAE: 0.4880
+
+ETTh2_96_96
+
+1: 
+Epoch: 2, Steps: 265 | 
+Train Loss: 0.4315396 
+Vali Loss: 0.2168600 
+Test Loss: 0.2971538
+    Test MSE: 0.2972 Test MAE: 0.3476
+
+2:
+Epoch: 2 Elapsed Time: 18.226977825164795 s
+Train MSE: 0.3912 Train MAE: 0.3548 
+Vali MSE: 0.2135 Vali MAE: 0.3179 
+    Test MSE: 0.2943 Test MAE: 0.3442
+
+
+ETTh2_96_192
+
+1:
+Epoch: 2, Steps: 262 | 
+Train Loss: 0.4727360 
+Vali Loss: 0.2845638 
+Test Loss: 0.3739893
+    Test MSE: 0.3740 Test MAE: 0.3941
+
+2:
+Epoch: 2 | Elapsed Time: 17.87874698638916 s | 
+Train MSE: 0.5106 Train MAE: 0.4079 
+Vali MSE: 0.2801 Vali MAE: 0.3597 
+    Test MSE: 0.3708 Test MAE: 0.3945
+
+ETTh2_96_336
+
+1:
+Epoch: 2, Steps: 257 | 
+Train Loss: 0.6361383 
+Vali Loss: 0.3633576 
+Test Loss: 0.4192565
+    Test MSE: 0.4193 Test MAE: 0.4305
+2:
+Epoch: 5 | Elapsed Time: 42.60597538948059 s 
+Train MSE: 0.5482 Train MAE: 0.4329 
+Vali MSE: 0.3539 Vali MAE: 0.4047 
+    Test MSE: 0.4319 Test MAE: 0.4342
+
+ETTh2_96_720
+
+1: 
+Epoch: 1, Steps: 245 | 
+Train Loss: 0.8602703 
+Vali Loss: 0.6035758 
+Test Loss: 0.4266022
+    Test MSE: 0.4266 Test MAE: 0.4448
+2
+Epoch: 1 | Elapsed Time: 12.604782819747925 s |
+Train MSE: 0.8404 Train MAE: 0.5507 
+Vali MSE: 0.6036 Vali MAE: 0.5354 
+    Test MSE: 0.4266 Test MAE: 0.4448
+
+ETTm1_96_96
+
+1: 
+Epoch: 6, Steps: 2149 | 
+Train Loss: 0.2333957 
+Vali Loss: 0.3870210 
+Test Loss: 0.3274964
+    Test MSE: 0.3275 Test MAE: 0.3643
+2:
+Epoch: 4 | Elapsed Time: 211.01162934303284 s  
+Train MSE: 0.2339 Train MAE: 0.3256 
+Vali MSE: 0.3886 Vali MAE: 0.4104 
+    Test MSE: 0.3194 Test MAE: 0.3595
+
+ETTm1_96_192
+
+1: 
+Epoch: 6, Steps: 2143 | 
+Train Loss: 0.2834982 
+Vali Loss: 0.4977960 
+Test Loss: 0.3747549
+    Test MSE: 0.3748 Test MAE: 0.3902
+
+2:
+Epoch: 5 | Elapsed Time: 275.287317276001 s | 
+Train MSE: 0.2793 Train MAE: 0.3603 
+Vali MSE: 0.4979 Vali MAE: 0.4676 
+    Test MSE: 0.3728 Test MAE: 0.3895
+
+ETTm1_96_336
+
+1: 
+Epoch: 7, Steps: 2134 | 
+Train Loss: 0.3160026 Vali Loss: 0.6430629 
+Test Loss: 0.4142395
+    Test MSE: 0.4142 Test MAE: 0.4169
+
+2:
+Epoch: 7 | Elapsed Time: 411.75414848327637 s | 
+Train MSE: 0.3116 Train MAE: 0.3864 
+Vali MSE: 0.6409 Vali MAE: 0.5358 
+    Test MSE: 0.4223 Test MAE: 0.4194
+
+ETTm1_96_720
+
+1: 
+Epoch: 5, Steps: 2110 | 
+Train Loss: 0.4042422 
+Vali Loss: 0.9618878 
+Test Loss: 0.4802815
+    Test MSE: 0.4803 Test MAE: 0.4539
+
+2:
+Epoch: 6 | Elapsed Time: 351.2492916584015 s | 
+Train MSE: 0.3929 Train MAE: 0.4375 
+Vali MSE: 0.9606 Vali MAE: 0.6513 
+    Test MSE: 0.4803 Test MAE: 0.4547
+
+ETTm2_96_96
+
+1: 
+Epoch: 2, Steps: 1075 | 
+Train Loss: 0.1850329 
+Vali Loss: 0.1305367 
+Test Loss: 0.1825899
+    Test MSE: 0.1810 Test MAE: 0.2606
+
+2:
+Epoch: 4 | Elapsed Time: 116.1285617351532 s | 
+Train MSE: 0.1619 Train MAE: 0.2358 
+Vali MSE: 0.1321 Vali MAE: 0.2469 
+    Test MSE: 0.1834 Test MAE: 0.2627
+
+ETTm2_96_192
+
+1: 
+Epoch: 1, Steps: 1072 | 
+Train Loss: 0.2773530 
+Vali Loss: 0.1782196 
+Test Loss: 0.2460750
+    Test MSE: 0.2461 Test MAE: 0.3055
+
+2:
+Epoch: 1 | Elapsed Time: 42.70739459991455 s |
+Train MSE: 0.3120 Train MAE: 0.3068 
+Vali MSE: 0.1782 Vali MAE: 0.2909 
+    Test MSE: 0.2458 Test MAE: 0.3053
+
+ETTm2_96_336
+
+1: 
+Epoch: 4, Steps: 1067 | 
+Train Loss: 0.2934275 
+Vali Loss: 0.2282407 
+Test Loss: 0.3140611
+    Test MSE: 0.3237 Test MAE: 0.3549
+
+2: 
+Epoch: 1 | Elapsed Time: 42.83049654960632 s | 
+Train MSE: 0.4129 Train MAE: 0.3587 
+Vali MSE: 0.2334 Vali MAE: 0.3338 
+    Test MSE: 0.3252 Test MAE: 0.3560
+
+ETTm2_96_720
+
+1: 
+Epoch: 1, Steps: 1055 | 
+Train Loss: 0.5947693 
+Vali Loss: 0.2993401 
+Test Loss: 0.4099846
+    Test MSE: 0.4107 Test MAE: 0.4051
+
+2:
+Epoch: 2 | Elapsed Time: 68.38005685806274 s  
+Train MSE: 0.5225 Train MAE: 0.4065 
+Vali MSE: 0.2951 Vali MAE: 0.3721 
+    Test MSE: 0.4059 Test MAE: 0.4013
+
+
+traffic_96_96
+
+1: 
+Epoch: 49, Steps: 756 |
+Train Loss: 0.2044747 
+Vali Loss: 0.3375365 
+Test Loss: 0.3751916
+    Test MSE: 0.3752 Test MAE: 0.2507
+
+2:
+Epoch: 50 | Elapsed Time: 35558.552852869034 s | 
+Train MSE: 0.2058 Train MAE: 0.2001 
+Vali MSE: 0.3364 Vali MAE: 0.2298 
+    Test MSE: 0.3745 Test MAE: 0.2506
+
+traffic_96_192
+1: 
+Epoch: 46, Steps: 750 | 
+Train Loss: 0.2143083 
+Vali Loss: 0.3431888 
+Test Loss: 0.3982372
+    Test MSE: 0.3982 Test MAE: 0.2614
+
+2:
+Epoch: 48 | Elapsed Time: 36611.85803580284 s |  
+Train MSE: 0.2189 Train MAE: 0.2083 
+Vali MSE: 0.3426 Vali MAE: 0.2315 
+    Test MSE: 0.3978 Test MAE: 0.2613
+
+traffic_96_336
+
+1: 
+Epoch: 48, Steps: 741 | 
+Train Loss: 0.2357203 
+Vali Loss: 0.3534056 
+Test Loss: 0.4159694
+    Test MSE: 0.4160 Test MAE: 0.2694
+
+2:
+Epoch: 50 | Elapsed Time: 38853.62676024437 s |
+Train MSE: 0.2306 Train MAE: 0.2171 
+Vali MSE: 0.3532 Vali MAE: 0.2346 
+    Test MSE: 0.4158 Test MAE: 0.2693
+
+
+traffic_96_720
+
+1: 
+Epoch: 46, Steps: 717 | 
+Train Loss: 0.2592570 
+Vali Loss: 0.4019112 
+Test Loss: 0.4487486
+    Test MAE: 0.4488 Test MAE: 0.2878
+
+2:
+Epoch: 45 | Elapsed Time: 43661.12674045563 s | 
+Train MSE: 0.2538 Train MAE: 0.2348 
+Vali MSE: 0.4015 Vali MAE: 0.2477 
+    Test MSE: 0.4488 Test MAE: 0.2876
+
+Weather_96_96
+
+1: 
+Epoch: 2, Steps: 2294 | 
+Train Loss: 0.5418537 
+Vali Loss: 0.4238870 
+Test Loss: 0.1724794
+    Test MSE: 0.1725 Test MAE: 0.2140
+
+2:
+Epoch: 4 | Elapsed Time: 523.1115636825562 s | 
+Train MSE: 0.3822 Train MAE: 0.2771 
+Vali MSE: 0.4335 Vali MAE: 0.2870
+    Test MSE: 0.1690 Test MAE: 0.2105
+
+Weather_96_192
+
+1: 
+Epoch: 2, Steps: 2288 | 
+Train Loss: 0.4721450 
+Vali Loss: 0.5033440 
+Test Loss: 0.2252193
+    Test MSE: 0.2252 Test MAE: 0.2601
+
+2:
+Epoch: 3 | Elapsed Time: 533.6208581924438 s |
+Train MSE: 0.4533 Train MAE: 0.3314 
+Vali MSE: 0.5020 Vali MAE: 0.3314 
+    Test MSE: 0.2195 Test MAE: 0.2552
+
+Weather_96_336
+
+1: 
+Epoch: 2, Steps: 2279 | 
+Train Loss: 0.5693440 
+Vali Loss: 0.5948789 
+Test Loss: 0.2853668
+    Test MSE: 0.2854 Test MAE: 0.3028
+
+2:
+Epoch: 2 | Elapsed Time: 545.1852376461029 s | 
+Train MSE: 0.5514 Train MAE: 0.3916 
+Vali MSE: 0.5823 Vali MAE: 0.3860 
+    Test MSE: 0.2768 Test MAE: 0.2958
+
+Weather_96_720
+
+1: 
+Epoch: 2, Steps: 2255 | 
+Train Loss: 0.6589544 
+Vali Loss: 0.7252559 
+Test Loss: 0.3631117
+    Test MSE: 0.3631 Test MAE: 0.3541
+
+2:
+Epoch: 3 | Elapsed Time: 580.3142404556274 s |
+Train MSE: 0.6071 Train MAE: 0.4303 
+Vali MSE: 0.7179 Vali MAE: 0.4722 
+    Test MSE: 0.3589 Test MAE: 0.3502
