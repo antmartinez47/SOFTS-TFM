@@ -1,0 +1,290 @@
+model_name=SOFTS
+
+python -u run.py \
+  --is_training 1 \
+  --root_path ./dataset/ETT-small/ \
+  --data_path ETTh2.csv \
+  --model_id ETTh2_96_96 \
+  --model $model_name \
+  --data ETTh2 \
+  --features M \
+  --seq_len 96 \
+  --pred_len 96 \
+  --e_layers 2 \
+  --enc_in 7 \
+  --dec_in 7 \
+  --c_out 7 \
+  --d_model 128 \
+  --d_core 64 \
+  --d_ff 128 \
+  --learning_rate 0.0003 \
+  --lradj cosine \
+  --train_epochs 20 \
+  --patience 3 \
+  --des 'Exp' \
+  --itr 1
+
+python -u run.py \
+  --is_training 1 \
+  --root_path ./dataset/ETT-small/ \
+  --data_path ETTh2.csv \
+  --model_id ETTh2_96_192 \
+  --model $model_name \
+  --data ETTh2 \
+  --features M \
+  --seq_len 96 \
+  --pred_len 192 \
+  --e_layers 2 \
+  --enc_in 7 \
+  --dec_in 7 \
+  --c_out 7 \
+  --d_model 128 \
+  --d_core 64 \
+  --d_ff 128 \
+  --learning_rate 0.0003 \
+  --lradj cosine \
+  --train_epochs 20 \
+  --patience 3 \
+  --des 'Exp' \
+  --itr 1
+
+python -u run.py \
+  --is_training 1 \
+  --root_path ./dataset/ETT-small/ \
+  --data_path ETTh2.csv \
+  --model_id ETTh2_96_336 \
+  --model $model_name \
+  --data ETTh2 \
+  --features M \
+  --seq_len 96 \
+  --pred_len 336 \
+  --e_layers 2 \
+  --enc_in 7 \
+  --dec_in 7 \
+  --c_out 7 \
+  --d_model 128 \
+  --d_core 64 \
+  --d_ff 128 \
+  --learning_rate 0.0003 \
+  --lradj cosine \
+  --train_epochs 20 \
+  --patience 3 \
+  --des 'Exp' \
+  --itr 1
+
+python -u run.py \
+  --is_training 1 \
+  --root_path ./dataset/ETT-small/ \
+  --data_path ETTh2.csv \
+  --model_id ETTh2_96_720 \
+  --model $model_name \
+  --data ETTh2 \
+  --features M \
+  --seq_len 96 \
+  --pred_len 720 \
+  --e_layers 2 \
+  --enc_in 7 \
+  --dec_in 7 \
+  --c_out 7 \
+  --d_model 128 \
+  --d_core 64 \
+  --d_ff 128 \
+  --learning_rate 0.0003 \
+  --lradj cosine \
+  --train_epochs 20 \
+  --patience 3 \
+  --des 'Exp' \
+  --itr 1
+
+Args in experiment:
+Namespace(task_name='long_term_forecast', is_training=1, model_id='ETTh2_96_96', model='SOFTS', data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='h', checkpoints='./checkpoints/', seq_len=96, label_len=48, pred_len=96, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, itr=1, train_epochs=20, batch_size=32, patience=3, learning_rate=0.0003, des='Exp', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_model=False)
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_ETTh2_96_96_SOFTS_ETTh2_ftM_sl96_ll48_pl96_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 8449
+val 2785
+test 2785
+	iters: 100, epoch: 1 | loss: 0.3667152
+	speed: 0.0095s/iter; left time: 49.4430s
+	iters: 200, epoch: 1 | loss: 0.6825901
+	speed: 0.0032s/iter; left time: 16.3221s
+Epoch: 1 cost time: 1.186344861984253
+Epoch: 1, Steps: 265 | Train Loss: 0.5246526 Vali Loss: 0.2177063 Test Loss: 0.2927893
+Validation loss decreased (inf --> 0.217706).  Saving model ...
+Updating learning rate to 0.00029815325108927063
+	iters: 100, epoch: 2 | loss: 0.5515264
+	speed: 0.0099s/iter; left time: 48.6659s
+	iters: 200, epoch: 2 | loss: 0.3115528
+	speed: 0.0031s/iter; left time: 14.7957s
+Epoch: 2 cost time: 0.8890063762664795
+Epoch: 2, Steps: 265 | Train Loss: 0.4315396 Vali Loss: 0.2168600 Test Loss: 0.2971538
+Validation loss decreased (0.217706 --> 0.216860).  Saving model ...
+Updating learning rate to 0.00029265847744427303
+	iters: 100, epoch: 3 | loss: 0.3132000
+	speed: 0.0097s/iter; left time: 45.4373s
+	iters: 200, epoch: 3 | loss: 0.3163216
+	speed: 0.0030s/iter; left time: 13.6747s
+Epoch: 3 cost time: 0.8585700988769531
+Epoch: 3, Steps: 265 | Train Loss: 0.3147608 Vali Loss: 0.2205030 Test Loss: 0.2964211
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 0.00028365097862825513
+	iters: 100, epoch: 4 | loss: 0.5029666
+	speed: 0.0099s/iter; left time: 43.5243s
+	iters: 200, epoch: 4 | loss: 0.2068475
+	speed: 0.0033s/iter; left time: 14.1341s
+Epoch: 4 cost time: 0.9389328956604004
+Epoch: 4, Steps: 265 | Train Loss: 0.3549070 Vali Loss: 0.2214835 Test Loss: 0.3023756
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 0.0002713525491562421
+	iters: 100, epoch: 5 | loss: 0.1939882
+	speed: 0.0102s/iter; left time: 42.0556s
+	iters: 200, epoch: 5 | loss: 0.3747508
+	speed: 0.0033s/iter; left time: 13.5195s
+Epoch: 5 cost time: 0.9476840496063232
+Epoch: 5, Steps: 265 | Train Loss: 0.2843695 Vali Loss: 0.2242488 Test Loss: 0.3054924
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : long_term_forecast_ETTh2_96_96_SOFTS_ETTh2_ftM_sl96_ll48_pl96_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2785
+mse:0.29715380534877467, mae:0.3476359418253924
+Args in experiment:
+Namespace(task_name='long_term_forecast', is_training=1, model_id='ETTh2_96_192', model='SOFTS', data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='h', checkpoints='./checkpoints/', seq_len=96, label_len=48, pred_len=192, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, itr=1, train_epochs=20, batch_size=32, patience=3, learning_rate=0.0003, des='Exp', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_model=False)
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_ETTh2_96_192_SOFTS_ETTh2_ftM_sl96_ll48_pl192_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 8353
+val 2689
+test 2689
+	iters: 100, epoch: 1 | loss: 0.6045358
+	speed: 0.0095s/iter; left time: 48.6920s
+	iters: 200, epoch: 1 | loss: 0.6678050
+	speed: 0.0032s/iter; left time: 16.2010s
+Epoch: 1 cost time: 1.1697993278503418
+Epoch: 1, Steps: 262 | Train Loss: 0.6361704 Vali Loss: 0.2859304 Test Loss: 0.3754236
+Validation loss decreased (inf --> 0.285930).  Saving model ...
+Updating learning rate to 0.00029815325108927063
+	iters: 100, epoch: 2 | loss: 0.5146809
+	speed: 0.0097s/iter; left time: 47.1150s
+	iters: 200, epoch: 2 | loss: 0.4307911
+	speed: 0.0030s/iter; left time: 14.3570s
+Epoch: 2 cost time: 0.853161096572876
+Epoch: 2, Steps: 262 | Train Loss: 0.4727360 Vali Loss: 0.2845638 Test Loss: 0.3739893
+Validation loss decreased (0.285930 --> 0.284564).  Saving model ...
+Updating learning rate to 0.00029265847744427303
+	iters: 100, epoch: 3 | loss: 0.6305796
+	speed: 0.0096s/iter; left time: 44.4577s
+	iters: 200, epoch: 3 | loss: 0.5348018
+	speed: 0.0030s/iter; left time: 13.5968s
+Epoch: 3 cost time: 0.8604652881622314
+Epoch: 3, Steps: 262 | Train Loss: 0.5826907 Vali Loss: 0.2849298 Test Loss: 0.3756938
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 0.00028365097862825513
+	iters: 100, epoch: 4 | loss: 0.6043680
+	speed: 0.0098s/iter; left time: 42.5971s
+	iters: 200, epoch: 4 | loss: 0.6889228
+	speed: 0.0030s/iter; left time: 12.9220s
+Epoch: 4 cost time: 0.8555159568786621
+Epoch: 4, Steps: 262 | Train Loss: 0.6466454 Vali Loss: 0.2918582 Test Loss: 0.3793693
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 0.0002713525491562421
+	iters: 100, epoch: 5 | loss: 0.4109989
+	speed: 0.0094s/iter; left time: 38.5910s
+	iters: 200, epoch: 5 | loss: 0.4456005
+	speed: 0.0031s/iter; left time: 12.4709s
+Epoch: 5 cost time: 0.8718662261962891
+Epoch: 5, Steps: 262 | Train Loss: 0.4282997 Vali Loss: 0.2870270 Test Loss: 0.3798166
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : long_term_forecast_ETTh2_96_192_SOFTS_ETTh2_ftM_sl96_ll48_pl192_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2689
+mse:0.3739893474335917, mae:0.39405304506038724
+Args in experiment:
+Namespace(task_name='long_term_forecast', is_training=1, model_id='ETTh2_96_336', model='SOFTS', data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='h', checkpoints='./checkpoints/', seq_len=96, label_len=48, pred_len=336, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, itr=1, train_epochs=20, batch_size=32, patience=3, learning_rate=0.0003, des='Exp', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_model=False)
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_ETTh2_96_336_SOFTS_ETTh2_ftM_sl96_ll48_pl336_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 8209
+val 2545
+test 2545
+	iters: 100, epoch: 1 | loss: 0.4363515
+	speed: 0.0099s/iter; left time: 49.9220s
+	iters: 200, epoch: 1 | loss: 0.8335178
+	speed: 0.0035s/iter; left time: 17.4237s
+Epoch: 1 cost time: 1.231597661972046
+Epoch: 1, Steps: 257 | Train Loss: 0.6349347 Vali Loss: 0.3684455 Test Loss: 0.4183582
+Validation loss decreased (inf --> 0.368446).  Saving model ...
+Updating learning rate to 0.00029815325108927063
+	iters: 100, epoch: 2 | loss: 0.4137534
+	speed: 0.0102s/iter; left time: 48.9213s
+	iters: 200, epoch: 2 | loss: 0.8585232
+	speed: 0.0035s/iter; left time: 16.3873s
+Epoch: 2 cost time: 0.9640529155731201
+Epoch: 2, Steps: 257 | Train Loss: 0.6361383 Vali Loss: 0.3633576 Test Loss: 0.4192565
+Validation loss decreased (0.368446 --> 0.363358).  Saving model ...
+Updating learning rate to 0.00029265847744427303
+	iters: 100, epoch: 3 | loss: 0.5700962
+	speed: 0.0104s/iter; left time: 47.0646s
+	iters: 200, epoch: 3 | loss: 0.2802835
+	speed: 0.0035s/iter; left time: 15.6542s
+Epoch: 3 cost time: 0.9680399894714355
+Epoch: 3, Steps: 257 | Train Loss: 0.4251898 Vali Loss: 0.3653247 Test Loss: 0.4327744
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 0.00028365097862825513
+	iters: 100, epoch: 4 | loss: 0.4384173
+	speed: 0.0106s/iter; left time: 45.3944s
+	iters: 200, epoch: 4 | loss: 0.7401386
+	speed: 0.0037s/iter; left time: 15.2372s
+Epoch: 4 cost time: 1.0064318180084229
+Epoch: 4, Steps: 257 | Train Loss: 0.5892780 Vali Loss: 0.3852395 Test Loss: 0.4356817
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 0.0002713525491562421
+	iters: 100, epoch: 5 | loss: 0.6235980
+	speed: 0.0103s/iter; left time: 41.2172s
+	iters: 200, epoch: 5 | loss: 0.2988298
+	speed: 0.0034s/iter; left time: 13.2033s
+Epoch: 5 cost time: 0.9338850975036621
+Epoch: 5, Steps: 257 | Train Loss: 0.4612139 Vali Loss: 0.3686069 Test Loss: 0.4346173
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : long_term_forecast_ETTh2_96_336_SOFTS_ETTh2_ftM_sl96_ll48_pl336_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2545
+mse:0.4192565254706062, mae:0.43054310273093654
+Args in experiment:
+Namespace(task_name='long_term_forecast', is_training=1, model_id='ETTh2_96_720', model='SOFTS', data='ETTh2', root_path='./dataset/ETT-small/', data_path='ETTh2.csv', features='M', target='OT', freq='h', checkpoints='./checkpoints/', seq_len=96, label_len=48, pred_len=720, seasonal_patterns='Monthly', enc_in=7, dec_in=7, c_out=7, d_model=128, d_core=64, e_layers=2, d_layers=1, d_ff=128, moving_avg=25, factor=1, distil=True, dropout=0.0, embed='timeF', activation='gelu', output_attention=False, attention_type='full', use_norm=True, num_workers=4, itr=1, train_epochs=20, batch_size=32, patience=3, learning_rate=0.0003, des='Exp', loss='MSE', lradj='cosine', use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', save_model=False)
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_ETTh2_96_720_SOFTS_ETTh2_ftM_sl96_ll48_pl720_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 7825
+val 2161
+test 2161
+	iters: 100, epoch: 1 | loss: 1.0191166
+	speed: 0.0099s/iter; left time: 47.6930s
+	iters: 200, epoch: 1 | loss: 0.7014239
+	speed: 0.0034s/iter; left time: 16.1627s
+Epoch: 1 cost time: 1.1841480731964111
+Epoch: 1, Steps: 245 | Train Loss: 0.8602703 Vali Loss: 0.6035758 Test Loss: 0.4266022
+Validation loss decreased (inf --> 0.603576).  Saving model ...
+Updating learning rate to 0.00029815325108927063
+	iters: 100, epoch: 2 | loss: 0.6389338
+	speed: 0.0097s/iter; left time: 44.0864s
+	iters: 200, epoch: 2 | loss: 0.6855379
+	speed: 0.0033s/iter; left time: 14.6152s
+Epoch: 2 cost time: 0.8859124183654785
+Epoch: 2, Steps: 245 | Train Loss: 0.6622359 Vali Loss: 0.6134116 Test Loss: 0.4214098
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 0.00029265847744427303
+	iters: 100, epoch: 3 | loss: 1.0844629
+	speed: 0.0097s/iter; left time: 41.7444s
+	iters: 200, epoch: 3 | loss: 0.6520114
+	speed: 0.0033s/iter; left time: 13.9651s
+Epoch: 3 cost time: 0.8849599361419678
+Epoch: 3, Steps: 245 | Train Loss: 0.8682371 Vali Loss: 0.6173636 Test Loss: 0.4115757
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 0.00028365097862825513
+	iters: 100, epoch: 4 | loss: 0.6561041
+	speed: 0.0099s/iter; left time: 40.3033s
+	iters: 200, epoch: 4 | loss: 0.8209143
+	speed: 0.0036s/iter; left time: 14.4344s
+Epoch: 4 cost time: 0.9736218452453613
+Epoch: 4, Steps: 245 | Train Loss: 0.7385092 Vali Loss: 0.6255165 Test Loss: 0.4189258
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : long_term_forecast_ETTh2_96_720_SOFTS_ETTh2_ftM_sl96_ll48_pl720_dm128_el2_dl1_df128_fc1_ebtimeF_dtTrue_Exp<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2161
+mse:0.426602227965862, mae:0.4448490157992351
