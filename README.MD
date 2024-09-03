@@ -8,6 +8,7 @@ the hyperparameter tunning utilities. Furthermore, several scripts are developed
 * Linux system (tested on Ubuntu 22.04+)
 * NVIDIA-compatible GPU (tested with RTX 3090)
 * miniconda3/anaconda3 installed as virtual environment manager
+* gcc compiler installed
 
 ## Reproduciblity
 
