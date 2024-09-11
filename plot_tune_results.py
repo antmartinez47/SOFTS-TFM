@@ -1,4 +1,4 @@
-from tfm_utils.plot_tune_utils import parallel_coord_plot, plot_hyperparameters, plot_cost_trajectories
+from tfm_utils.plot_utils import parallel_coord_plot, plot_hyperparameters, plot_cost_trajectories
 import argparse
 import os
 

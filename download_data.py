@@ -1,8 +1,6 @@
 import gdown
 import zipfile
 import os
-import shutil
-
 
 file_id = '1NF7VEefXCmXuWNbnNe858WvQAkJ_7wuP'
 file_name = 'time-series-dataset.zip'

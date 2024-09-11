@@ -8,6 +8,27 @@ import plotly.graph_objects as go
 import random
 
 def parallel_coord_plot(csv_file, suptitle=None, path=None, configs=100):
+    """
+    Generates a parallel coordinates plot summarizing a hyperparameter tuning experiment.
+
+    This function reads a CSV file containing the entire results log of a hyperparameter tuning experiment (using libraries such as SMAC or RayTune), 
+    processes the data accordingly, and generates a parallel coordinates plot using Plotly. The function supports both SMAC and RayTune 
+    result formats, allowing for random selection of a subset of configurations to avoid overloading the parallel coordinate plots, 
+    and provides an option to save the plot as an image.
+
+    Parameters:
+        csv_file (str): The path to the CSV file to be read. The file should contain configuration and performance metrics from the tuning experiment.
+        suptitle (str, optional): The title of the plot. Defaults to None.
+        path (str, optional): The file path where the plot should be saved. If None, the plot is not saved. Defaults to None.
+        configs (int, optional): The number of random configurations to include in the plot. Defaults to 100.
+
+    Notes:
+        - For SMAC results (detected by the presence of 'smac' in the file name), the function groups by the 'id' column and selects the row 
+        with the highest 'budget' for each group.
+        - For RayTune or other formats, the function directly filters and renames columns, retaining only configuration and best validation loss metrics.
+        - Configuration hyperparameters (columns starting with 'config') are plotted against the corresponding 'valid_loss' or 'best_valid_loss' metric.
+        - If 'd_ff' is present among the hyperparameters, it is excluded from the plot.
+    """
     df = pd.read_csv(csv_file)
     if "smac" in csv_file:
         # Group by 'id' and select the row with the highest 'budget' for each group
@@ -55,6 +76,40 @@ def parallel_coord_plot(csv_file, suptitle=None, path=None, configs=100):
         fig.write_image(path, width=1900, height=800)
 
 def plot_hyperparameters(data_dict, suptitle=None, path=None):
+    """
+    Generates a figure summarizing hyperparameters versus cost from multiple CSV files.
+    This function reads multiple CSV files containing the entire results log of an hyperparameter tuning experiment implemented with raytune or smac libraries, 
+    processes the data, and generates a figure made up of subplots. Each subplot displays either a scatter plot or box plot depending on the type of the hyperparameter. 
+    The figure is intended to visualize the relationship between various hyperparameters and their corresponding cost metrics, allowing for easy comparison of tuning results 
+    from multiple experiments.
+
+    Parameters:
+        data_dict (list of dict): A list of dictionaries where keys are labels (e.g., algorithm names) and values are paths to CSV files. Each CSV file contains hyperparameter tuning results.
+        suptitle (str, optional): The title of the entire figure. Defaults to None.
+        path (str, optional): The file path where the figure should be saved. If None, the figure is not saved. Defaults to None.
+
+    Data Processing:
+        - For CSV files associated with SMAC (detected by the presence of 'smac' in the file name), the function selects the row with the highest budget for each group based on the 'id' column.
+        - For RayTune or other formats, the function directly processes the data, renaming the relevant columns to standardize the cost metric.
+        - Hyperparameters are identified by columns that start with 'config'. The cost metric is either 'cost' or 'best_valid_loss', depending on the file format.
+        - If 'd_ff' is present among the hyperparameters, it is excluded from the plot.
+
+    Plot:
+        - Each hyperparameter is plotted against the cost metric using a scatter plot or box plot.
+            - A box plot is used if the hyperparameter has fewer than 10 unique values or is categorical.
+            - A scatter plot is used for continuous or high-cardinality hyperparameters.
+        - The color palette is randomly chosen for scatter plots and uniquely assigned for each box plot category.
+        - Subplots are automatically arranged into rows and columns based on the number of hyperparameters, with gridlines and titles added for clarity.
+
+    Output:
+        - Displays the figure with all subplots.
+        - Saves the figure as an image file if `path` is provided, ensuring that the legend and title are not cut off.
+
+    Additional Features:
+        - For multiple CSV files, a shared legend is displayed indicating the algorithm or experiment associated with each plot.
+        - Any empty subplots (when the number of hyperparameters is less than the available subplot spaces) are hidden.
+
+    """
     num_plots = None
     fig, axes = None, None
 
@@ -124,18 +179,34 @@ def plot_hyperparameters(data_dict, suptitle=None, path=None):
 
 def plot_cost_trajectories(data_files, default_value=None, smooth=True, window_size=25, path=None):
     """
-    Plots the evolution of cost over wall clock time for multiple datasets using line plots.
-    Includes a secondary x-axis showing the cumulative number of configurations evaluated so far.
-    Automatically selects the plotting method based on the presence of 'smac' in the file path.
+    This function visualizes how the cost metric evolves over time during hyperparameter optimization for different tuning algorithms (e.g., SMAC or RayTune).
+    It processes data from multiple CSV files containing the results log of the hyperparameter tunning experiments (raytune or smac libraries), 
+    calculates wall clock time, and optionally smooths the cost values to enhance trend interpretability. The resulting plot includes a secondary x-axis 
+    to display the cumulative number of configurations evaluated over time. It also supports displaying a reference line for a default cost value.
 
     Parameters:
-    data_files (dict): A dictionary where the key is the legend name and 
-                       the value is the path to the corresponding CSV file.
-    smooth (bool): Whether to smooth the cost values. Default is True.
-    window_size (int): The size of the rolling window for smoothing. Default is 20.
+        data_files (list of dict): A list of dictionaries where keys are labels (e.g., algorithm names) and values are paths to CSV files containing hyperparameter tuning results.
+        default_value (float, optional): The cost value for a default configuration. If provided, a horizontal line will be added to the plot. Defaults to None.
+        smooth (bool, optional): Whether to apply a rolling minimum to smooth the cost values. Defaults to True.
+        window_size (int, optional): The window size for the rolling minimum smoothing function. Only applicable if `smooth=True`. Defaults to 25.
+        path (str, optional): The file path where the plot should be saved. If None, the plot is not saved. Defaults to None.
 
-    Returns:
-    None: Displays the plot.
+    Data Processing:
+        - For SMAC results (detected by the presence of 'smac' in the file name), the function groups by 'id' and selects the row with the highest 'budget' for each group.
+        - For other tuning libraries (e.g., RayTune), the function processes the data based on the 'date' column.
+        - Wall clock time is calculated relative to the first timestamp or start time in each dataset.
+        - Cumulative configurations are tracked, and both time and configuration counts are mapped for the dual-axis plot.
+
+    Plot:
+        - The primary x-axis represents wall clock time (in seconds).
+        - The y-axis represents the cost metric (either 'cost' or 'best_valid_loss').
+        - The secondary x-axis displays the cumulative number of configurations evaluated over time.
+        - Each tuning algorithm (represented by a CSV file) is plotted as a line, with optional smoothing applied to the cost metric.
+        - A reference line for a default cost value can be added to the plot if `default_value` is provided.
+
+    Output:
+        - Displays the plot with both wall clock time and cumulative configurations.
+        - Saves the plot as an image if `path` is provided.
     """
     fig, ax1 = plt.subplots(figsize=(12, 6))
     sns.set(style="whitegrid")
