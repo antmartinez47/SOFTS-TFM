@@ -41,6 +41,7 @@ SOFTS-TFM is built on top of a fork of the official repository. The original fil
 - **`train_softs.py`**: Trains a SOFTS model.
 - **`tune_softs.py`**: Runs an HPO experiment on SOFTS using the Ray Tune package.
 - `SOFTS-ETTh2.sh`: Runs all scripts used to generate the results presented in the TFM, enabling full reproduction of the SOFTS-ETTh2 experiment.
+- `search_space.md`: Explanation of the process of constructing the search space for SOFTS-ETTh2 HPO experiment.
 
 The files marked in **bold** utilize `argparse`, allowing users to adapt their behavior to specific problems. Furthermore, all functions and modules of these new files are well-documented to help users easily adapt and expand the code for their own use cases.
 
