@@ -44,7 +44,7 @@ The log-uniform distribution helps improve the coverage of the sampling interval
 Regarding the learning rate scheduler, the official SOFTS implementation uses a cosine learning rate scheduler, defined by the following expression:
 
 $$
-\text{lr} = \frac{\text{args.learning\_rate}}{2} \times \left(1 + \cos\left(\frac{\text{epoch}}{\text{args.train\_epochs}} \times \pi\right)\right)
+\text{lr} = \frac{\text{lr}}{2} \times \left(1 + \cos\left(\frac{\text{epoch}}{n_{epochs}} \times \pi\right)\right)
 $$
 
 This works as follows:
