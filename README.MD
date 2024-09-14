@@ -65,7 +65,8 @@ SOFTS-TFM is designed to be used as an extension of the original repository, mai
 
 To train a SOFTS model, the dataset must meet several requirements. In particular, it should be a single CSV file where each column contains a time series, along with an additional column named *date* for the timestamps.
 
-The following is an example of using SOFTS-TFM to train a SOFTS model for the task of Multivariate Time Series Forecasting on the ETTh2 dataset (7 time series):
+As a usage example, consider the task of multivariate forecasting over the dataset ETTh2 (7 timeseries), with an input window size of 96 timesteps and a output window size of 192 timesteps. The following is an example of using SOFTS-TFM to accomplish this task.
+
 
 ```bash
 conda activate py3.11-softs-raytune
